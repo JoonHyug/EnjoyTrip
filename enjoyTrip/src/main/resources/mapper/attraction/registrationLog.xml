@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.enjoyTrip.attraction.model.mapper.RegistrationLogMapper">
+    <insert id="addRegistrationLog" parameterType="RegistrationLog">
+        INSERT INTO registration_log
+        (account_uid, content_id)
+        VALUES (
+                #{accountUid},
+                #{contentId}
+               )
+    </insert>
+
+    <select id="selectByContentId" parameterType="int" resultType="Map">
+        SELECT id, account_uid as accountUid, content_id as contentId, check
+        FROM registration_log
+        WHERE #{contentId}
+    </select>
+
+    <update id="changeCheckToTrue" parameterType="int">
+        UPDATE registration_log
+        SET check = true
+        WHERE content_id = #{contentId}
+    </update>
+
+    <select id="alreadyRegistration" parameterType="RegistrationLog" resultType="RegistrationLog">
+        SELECT account_uid as accountUid, content_id as contentId
+        FROM registration_log
+        WHERE account_uid = #{accountUid} AND content_id = #{contentId}
+    </select>
+</mapper>

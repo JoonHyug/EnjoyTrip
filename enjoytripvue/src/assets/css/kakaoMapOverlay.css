@@ -1,0 +1,11 @@
+/* 오버레이 아래 삼각형 */
+.overlaybox::after {
+  content: "";
+  position: absolute;
+  margin-left: -12px;
+  left: 50%;
+  bottom: -13px;
+  width: 25px;
+  height: 15px;
+  background: url("/public/img/svg.svg");
+}

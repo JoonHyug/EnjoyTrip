@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.enjoyTrip.picture.model.mapper.PictureMapper">
+    <insert id="insertPicture" parameterType="Picture">
+        INSERT INTO picture (route, type, account_id, pic_name, full_route)
+        VALUES (#{route}, #{type}, #{accountId}, #{picName}, #{fullRoute})
+    </insert>
+    <select id="picturePath" parameterType="int" resultType="String">
+        SELECT full_route as fullRoute
+        FROM picture
+        WHERE id = #{id}
+    </select>
+    <select id="alreadyUseProfile" parameterType="Picture" resultType="int">
+        SELECT count(id)
+        FROM picture
+        WHERE type = #{type} AND account_id = #{accountId}
+    </select>
+    <update id="changeProfilePic" parameterType="Picture">
+        UPDATE picture
+        SET pic_name = #{picName}
+        WHERE id = #{id}
+    </update>
+    <select id="idToAccountIdType" parameterType="Picture" resultType="int">
+        SELECT id
+        FROM picture
+        WHERE type = #{type} AND account_id = #{accountId}
+    </select>
+    <select id="selectFile" parameterType="int" resultType="Picture">
+        SELECT id, route, type, account_id as accountId, pic_name as picName, full_route as fullRoute, create_time as createTime
+        FROM picture
+        WHERE id = #{id}
+    </select>
+    <select id="selectAllByAccountId" parameterType="String" resultType="Picture">
+        SELECT id, route, type, account_id as accountId, pic_name as picName, full_route as fullRoute, create_time as createTime
+        FROM picture
+        WHERE account_id = #{accountId}
+    </select>
+    <select id="getAllAccountProfile" parameterType="java.util.List" resultType="Picture">
+        SELECT id, account_id as accountId, pic_name as picName
+        FROM picture
+        WHERE account_id in (
+        <foreach collection="accountIds" item="id" separator=",">
+            #{id}
+        </foreach>
+        )
+    </select>
+</mapper>

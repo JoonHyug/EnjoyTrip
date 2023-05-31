@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.enjoyTrip.search.model.mapper.GugunMapper">
+	
+	<select id="selectAll" resultType="Gugun">
+		SELECT gugun_code as gugunCode
+			  ,gugun_name as gugunName
+			  ,sido_code as sidoCode
+		FROM gugun
+	</select>
+
+	<select id="selectBySidoCode" resultType="Gugun" parameterType="int">
+		SELECT gugun_code as gugunCode
+			  ,gugun_name as gugunName
+			  ,sido_code as sidoCode
+		FROM gugun
+		WHERE sido_code = #{sidoCode}
+	</select>
+</mapper>

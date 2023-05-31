@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.enjoyTrip.review.model.mapper.ReviewMapper">
+	<!-- contentId별로 리뷰 조회 -->
+	<select id="selectAllByContentId" resultType="Review" parameterType="int">
+		SELECT id, account_uid as accountUid, content, point, create_time as createTime, content_id as contentId
+		FROM review
+		WHERE content_id = #{contentId}
+	</select>
+	
+	<!-- account_uid 별로 리뷰 조회 -->
+	<select id="selectAllByAccountUid" resultType="Review" parameterType="map">
+		SELECT id, account_uid as accountUid, content, point, create_time as createTime, content_id as contentId
+		FROM review
+		WHERE account_uid = #{accountUid}
+			<if test="word != null and word != ''">
+				<if test="key == 'content'">
+					AND content like concat('%', #{word}, '%')
+				</if>
+				<if test="key == 'contentId'">
+					AND content_id like concat('%', #{word}, '%')
+				</if>
+			</if>
+			<if test="order != null and order != ''">
+				<if test="!sort">
+					ORDER BY #{order} desc
+				</if>
+				<if test="sort">
+					ORDER BY #{order}
+				</if>
+			</if>
+			<if test="order == null or order == ''">
+				<if test="!sort">
+					ORDER BY create_time desc
+				</if>
+				<if test="sort">
+					ORDER BY create_time
+				</if>
+			</if>
+		limit #{start}, #{perPage}
+	</select>
+	
+	<select id="getTotalItemsByAccountId" parameterType="int" resultType="int">
+		SELECT count(id)
+		FROM review
+		WHERE account_uid = #{accountUid}
+		<if test="word != null and word != ''">
+			<if test="key == 'content'">
+				AND content like concat('%', #{word}, '%')
+			</if>
+			<if test="key == 'contentId'">
+				AND content_id like concat('%', #{word}, '%')
+			</if>
+		</if>
+	</select>
+	
+	<!-- 리뷰 등록 -->
+	<insert id="registReview" parameterType="review">
+		insert into review 
+		(account_uid, content, point, content_id)
+		VALUES(#{accountUid}, #{content}, #{point}, #{contentId})
+	</insert>
+	
+	<!-- 리뷰 수정 -->
+	<update id="updateReview" parameterType="review">
+		update review set content=#{content}, point=#{point} where id=#{id}
+	</update> 
+	
+	<!-- 리뷰 삭제 -->
+	<delete id="deleteReviewById" parameterType="int">
+		delete from review where id=#{id}
+	</delete>
+
+	<select id="recent3Review" parameterType="int" resultType="Review">
+		SELECT id, content, point, create_time as createTime, content_id as contentId
+		FROM review
+		WHERE account_uid = ${accountUid}
+		ORDER BY create_time DESC
+		LIMIT 0, 3
+	</select>
+	<select id="getTotalReview" parameterType="int" resultType="int">
+		SELECT count(id)
+		FROM review
+		WHERE content_id = #{contentId}
+	</select>
+	<select id="getReviewedId" parameterType="int" resultType="int">
+		SELECT DISTINCT account_uid
+		FROM review
+		WHERE content_id = #{contentId}
+	</select>
+	<select id="getAvgPoint" parameterType="int" resultType="float">
+		SELECT AVG(point)
+		FROM review
+		WHERE content_id = #{contentId}
+	</select>
+</mapper>

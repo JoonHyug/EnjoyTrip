@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ssafy.enjoyTrip.attraction.model.mapper.DescriptionMapper">
+	<!-- 전체 조회 -->
+	<select id="selectAll" resultType="Description">
+		select content_id as contentId
+			  ,homepage
+			  ,overview
+			  ,telname 
+		from attraction_description
+	</select>
+	
+	<!-- 상세 조회 -->
+	<select id="selectById" parameterType="int" resultType="Description">
+		select content_id as contentId
+			  ,homepage
+			  ,overview
+			  ,telname 
+		from attraction_description 
+		where content_id=#{contentId}
+	</select>
+
+	<!--데이터 삽입-->
+	<insert id="addDescription" parameterType="Description">
+		INSERT INTO attraction_description
+		(content_id, overview)
+		VALUES(${contentId}, ${overview})
+	</insert>
+</mapper>

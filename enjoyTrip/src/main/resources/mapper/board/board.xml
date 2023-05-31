@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.ssafy.enjoyTrip.board.model.mapper.BoardMapper">
+
+	<insert id="writeArticle" parameterType="board">
+		insert into board (account_id, subject, content, hit, type)
+		values (#{accountId}, #{subject}, #{content}, 1, #{type})
+	</insert>
+	
+	<select id="listArticle" parameterType="map" resultType="board">
+		select articleno, account_id as accountId, subject, content, hit, regtime
+		from board
+		WHERE type = #{type}
+			<if test="word != null and word != ''">
+				<if test="key == 'subject'">
+					AND subject like concat('%', #{word}, '%')
+				</if>
+				<if test="key == 'accountId'">
+					AND account_id like concat('%', #{word}, '%')
+				</if>
+			</if>
+			<if test="order != null and order != ''">
+				<if test="!sort">
+					ORDER BY ${order} desc
+				</if>
+				<if test="sort">
+					ORDER BY ${order}
+				</if>
+			</if>
+			<if test="order == null or order == ''">
+				<if test="!sort">
+					ORDER BY regtime desc
+				</if>
+				<if test="sort">
+					ORDER BY regtime
+				</if>
+			</if>
+		limit #{start}, #{perPage}
+	</select>
+	
+	<select id="getTotalCount" parameterType="map" resultType="int">
+		select count(articleno)
+		from board
+		WHERE type = #{type}
+			<if test="word != null and word != ''">
+				<if test="key == 'subject'">
+					AND subject like concat('%', #{word}, '%')
+				</if>
+				<if test="key == 'accountId'">
+					AND account_id like concat('%', #{word}, '%')
+				</if>
+			</if>
+	</select>
+	
+	<select id="getArticle" parameterType="int" resultType="board">
+		select articleno, account_id as accountId, subject, content, hit, regtime, type
+		from board
+		where articleno = #{articleno}
+	</select>
+	
+	<update id="updateHit" parameterType="int">
+		update board
+		set hit = hit + 1, regtime = regtime
+		where articleno = #{articleno}
+	</update>
+	
+	<update id="modifyArticle" parameterType="board">
+		update board
+		set subject = #{subject}, content = #{content}
+		where articleno = #{articleno}
+	</update>
+	
+	<delete id="deleteArticle" parameterType="int">
+		delete from board
+		where articleno = #{articleno}
+	</delete>
+
+	<select id="selectAll" resultType="Board">
+		SELECT articleno, account_id as accountId, subject, content, hit,regtime, type
+		FROM board
+	</select>
+
+</mapper>
+

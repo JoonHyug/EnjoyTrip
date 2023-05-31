@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.enjoyTrip.travelPlan.model.mapper.TravelPlanMapper">
+    <insert id="createTravelPlan" parameterType="TravelPlan">
+        INSERT INTO travel_plan (account_Id, title, hit)
+        VALUES (#{accountId}, #{title}, 1)
+    </insert>
+    <update id="updateTravelPlan" parameterType="TravelPlan">
+        UPDATE travel_plan
+        SET title = #{title}
+        WHERE id = #{id}
+    </update>
+    <delete id="deleteTravelPlan" parameterType="int">
+        DELETE FROM travel_plan
+        WHERE id = #{id}
+    </delete>
+    <select id="selectAllTravelPlan" parameterType="map" resultType="TravelPlan">
+        SELECT id, account_id as accountId, title, create_time as createTime, hit
+        FROM travel_plan
+        <if test="word != null and word != ''">
+            <if test="key == 'title'">
+                WHERE title like concat('%', #{word}, '%')
+            </if>
+            <if test="key == 'accountId'">
+                WHERE account_id like concat('%', #{word}, '%')
+            </if>
+        </if>
+        <if test="order != null and order != ''">
+            <if test="!sort">
+                ORDER BY ${order} desc
+            </if>
+            <if test="sort">
+                ORDER BY ${order}
+            </if>
+        </if>
+        <if test="order == null or order == ''">
+            <if test="!sort">
+                ORDER BY create_time desc
+            </if>
+            <if test="sort">
+                ORDER BY create_time
+            </if>
+        </if>
+        limit #{start}, #{perPage}
+    </select>
+    <select id="selectAllByAccountUid" parameterType="int" resultType="TravelPlan">
+        SELECT id, account_id as accountId, title, create_time as createTime, hit
+        FROM travel_plan
+        WHERE account_id = #{accountId}
+    </select>
+    <update id="increaseHit" parameterType="int">
+        UPDATE travel_plan
+        SET hit = hit + 1, create_time = create_time
+        WHERE id = #{id}
+    </update>
+    <select id="getTotalCount" parameterType="map" resultType="int">
+        SELECT count(id)
+        FROM travel_plan
+        <if test="word != null and word != ''">
+            <if test="key == 'title'">
+                WHERE title like concat('%', #{word}, '%')
+            </if>
+            <if test="key == 'accountUid'">
+                WHERE account_id like concat('%', #{word}, '%')
+            </if>
+        </if>
+    </select>
+    <select id="getAccountIdToTravelPlanId" parameterType="int" resultType="String">
+        SELECT account_id as accountId
+        FROM travel_plan
+        WHERE id = #{travelPlanId}
+    </select>
+
+    <select id="retrieveTravelPlanId" parameterType="String" resultType="int">
+        SELECT id
+        FROM travel_plan
+        WHERE account_id = #{accountId}
+        ORDER BY create_time DESC
+        LIMIT 0, 1
+    </select>
+    
+    <select id="idToTitle" parameterType="int" resultType="String">
+        SELECT title
+        FROM travel_plan
+        WHERE id = #{id}
+    </select>
+</mapper>

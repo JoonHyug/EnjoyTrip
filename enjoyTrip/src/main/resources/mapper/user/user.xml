@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.enjoyTrip.user.model.mapper.UserMapper">
+
+	<!-- 로그인 -->
+	<select id="login" resultType="User" parameterType="user">
+		SELECT id, name, email, gender , access_id as accessId
+		FROM account 
+		WHERE id = #{id} and password = #{password}
+	</select>
+	
+	<!-- 회원 등록 -->
+	<insert id="regist" parameterType="User">
+		insert into account (id, password, name, email,gender) values (#{id},#{password},#{name},#{email},#{gender})
+	</insert>
+
+	<!-- id값으로 회원 정보 삭제 -->
+	<delete id="deleteById" parameterType="String">
+		delete from account where id=#{id}
+	</delete>
+	
+	<!-- id값으로 회원 정보 수정 -->
+	<update id="updateByCode" parameterType="Map">
+		update account set name = #{name}, email=#{email}, id=#{newid} where id=#{id}
+	</update>
+	
+	<!-- 비밀번호 업데이트 -->
+	<update id="updatepwdByCode" parameterType="Map">
+		update account set password=#{newpassword} where id=#{id}
+	</update>
+	
+	<!-- 비밀번호 확인 -->
+	<select id="getPasswordById" resultType="String" parameterType="String">
+		select password from account where id=#{id}
+	</select>
+
+	<select id="getUserUidToId" resultType="int" parameterType="String">
+		SELECT uid
+		FROM account
+		WHERE id = #{id}
+	</select>
+
+	<select id="getUserIdToUid" resultType="String" parameterType="int">
+		SELECT id
+		FROM account
+		WHERE uid = #{uid}
+	</select>
+</mapper>

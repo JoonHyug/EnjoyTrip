@@ -1,0 +1,11 @@
+.main::-webkit-scrollbar {
+  display: none;
+}
+
+.review::-webkit-scrollbar {
+  display: none;
+}
+
+.body::-webkit-scrollbar {
+  display: none;
+}

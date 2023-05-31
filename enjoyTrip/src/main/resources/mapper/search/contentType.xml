@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.enjoyTrip.search.model.mapper.ContentTypeMapper">
+
+	<select id="selectAll" resultType="ContentType">
+		SELECT content_type_id as contentId
+			  ,name
+		FROM content
+	</select>
+
+	<select id="getNamebyContentId" resultType="ContentType" parameterType="int">
+		SELECT name
+		FROM content
+		WHERE content_type_id = #{contentId}
+	</select>
+
+</mapper>

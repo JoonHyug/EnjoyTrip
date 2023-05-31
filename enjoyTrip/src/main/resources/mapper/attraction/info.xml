@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.ssafy.enjoyTrip.attraction.model.mapper.InfoMapper">
+
+	<!-- 시도명으로 찾기 -->
+	<select id="SearchBySidoGun" parameterType="Map"
+		resultType="Info">
+		SELECT content_id as contentId
+			  ,content_type_id as contentTypeId
+			  ,title 
+			  ,addr1
+			  ,addr2
+			  ,zipcode
+			  ,tel
+			  ,first_image as firstImage
+			  ,first_image2 as firstImage2
+			  ,readcount
+			  ,sido_code as sidoCode
+			  ,gugun_code as gugunCode
+			  ,latitude
+			  ,longitude
+			  ,mlevel
+		FROM attraction_info
+		WHERE 
+		content_type_id in
+		<foreach collection="category" item="contentTypeId" separator="," open='(' close=')'>#{contentTypeId}</foreach>
+		AND sido_code=#{sidoCode}
+		AND gugun_code=#{gugunCode}
+	</select>
+
+	<!-- 시도명으로 찾기 -->
+	<select id="SearchBySidoGunKeyword" parameterType="Map"
+		resultType="Info">
+		SELECT content_id as contentId
+			  ,content_type_id as contentTypeId
+			  ,title 
+			  ,addr1
+			  ,addr2
+			  ,zipcode
+			  ,tel
+			  ,first_image as firstImage
+			  ,first_image2 as firstImage2
+			  ,readcount
+			  ,sido_code as sidoCode
+			  ,gugun_code as gugunCode
+			  ,latitude
+			  ,longitude
+			  ,mlevel
+		FROM attraction_info
+		WHERE
+		content_type_id in 
+		<foreach collection="category" item="contentTypeId" separator="," open='(' close=')'>#{contentTypeId}</foreach>
+		AND sido_code=#{sidoCode}
+		AND
+		gugun_code=#{gugunCode}
+		AND title like CONCAT('%',#{keyword},'%')
+	</select>
+
+	<!-- 콘텐트id로 찾기 -->
+	<select id="selectByContentId" parameterType="Int" resultType="Info">
+		SELECT content_id as contentId
+			  ,content_type_id as contentTypeId
+			  ,title 
+			  ,addr1
+			  ,addr2
+			  ,zipcode
+			  ,tel
+			  ,first_image as firstImage
+			  ,first_image2 as firstImage2
+			  ,readcount
+			  ,sido_code as sidoCode
+			  ,gugun_code as gugunCode
+			  ,latitude
+			  ,longitude
+			  ,mlevel
+		FROM attraction_info 
+		WHERE content_id=#{contentId}
+	</select>
+
+	<update id="increaseReadCount" parameterType="Int">
+		UPDATE attraction_info
+		SET readcount = readcount + 1
+		WHERE content_id = ${contentId}
+	</update>
+
+	<insert id="addInfo" parameterType="Info">
+		INSERT INTO attraction_info
+		(content_id,
+		 content_type_id,
+		 title,
+		 addr1,
+		 addr2,
+		 zipcode,
+		 tel,
+		 first_image,
+		 first_image2,
+		 sido_code,
+		 gugun_code,
+		 latitude,
+		 longitude)
+		VALUES (
+		        ${contentId},
+		        ${contentTypeId},
+		        ${title},
+		        ${addr1},
+		        ${addr2},
+		        ${zipcode},
+		        ${tel},
+				${firstImage},
+		        ${firstImage2},
+				${sidoCode},
+				${gugunCode},
+				${latitude},
+				${longitude}
+			   )
+
+	</insert>
+
+	<select id="isContentIdExist" parameterType="int" resultType="int">
+		SELECT count(content_id)
+		FROM attraction_info
+		WHERE content_id = ${contentId}
+	</select>
+	
+	<select id="getInfo" parameterType="int" resultType="Info">
+		SELECT content_id as contentId, content_type_id as contentTypeId, title, addr1, first_image, latitude, longitude
+		FROM attraction_info
+		WHERE content_id = #{contentId}
+	</select>
+	<select id="getHitTop3" resultType="Info">
+		SELECT content_id as contentId
+			 ,content_type_id as contentTypeId
+			 ,title
+			 ,addr1
+			 ,addr2
+			 ,zipcode
+			 ,tel
+			 ,first_image as firstImage
+			 ,first_image2 as firstImage2
+			 ,readcount
+			 ,sido_code as sidoCode
+			 ,gugun_code as gugunCode
+			 ,latitude
+			 ,longitude
+			 ,mlevel
+		FROM attraction_info
+		ORDER BY readcount DESC
+		limit 0, 3
+	</select>
+</mapper>

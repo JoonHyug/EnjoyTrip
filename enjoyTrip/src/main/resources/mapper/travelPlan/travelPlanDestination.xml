@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.enjoyTrip.travelPlan.model.mapper.TravelPlanDestinationMapper">
+    <select id="selectAll" parameterType="int" resultType="TravelPlanDestination">
+        SELECT travel_plan_id as travelPlanId, content_id as contentId, content_order as contentOrder, day
+        FROM travel_plan_destination
+        WHERE travel_plan_id = #{travelPlanId}
+    </select>
+    <insert id="createTravelPlanDestination" parameterType="java.util.List">
+        INSERT INTO travel_plan_destination (travel_plan_id, content_id, content_order, day)
+        VALUES
+            <foreach item="item" collection="travelPlanDestinationList" separator=",">
+                (#{item.travelPlanId}, #{item.contentId}, #{item.contentOrder}, #{item.day})
+            </foreach>
+    </insert>
+    <delete id="deleteByTravelPlanId" parameterType="int">
+        DELETE FROM travel_plan_destination
+        WHERE travel_plan_id = #{travelPlanId}
+    </delete>
+</mapper>

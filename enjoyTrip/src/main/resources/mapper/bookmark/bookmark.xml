@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.enjoyTrip.bookmark.model.mapper.BookmarkMapper">
+    <select id="selectByUserUid" resultType="Bookmark" parameterType="int">
+        SELECT id, content_id as contentId
+        FROM bookmark
+        WHERE account_uid = ${account_uid}
+        ORDER BY id DESC
+    </select>
+
+    <insert id="addBookmark" parameterType="Bookmark">
+        INSERT INTO bookmark
+        (account_uid, content_id)
+        VALUES (#{accountUid}, #{contentId})
+    </insert>
+
+    <delete id="removeBookmark" parameterType="int">
+        DELETE FROM bookmark
+        WHERE id=#{id}
+    </delete>
+
+    <select id="alreadyRegist" parameterType="Bookmark" resultType="int">
+        SELECT count(id)
+        FROM bookmark
+        WHERE account_uid = #{accountUid} AND content_id = #{contentId}
+    </select>
+    <select id="recent3Bookmark" parameterType="int" resultType="Bookmark">
+        SELECT id, content_id as contentId
+        FROM bookmark
+        WHERE account_uid = #{accountUid}
+        ORDER BY id DESC
+        LIMIT 0, 3
+    </select>
+
+    <delete id="removeBookmarkToUidId" parameterType="Bookmark">
+        DELETE FROM bookmark
+        WHERE account_uid = #{accountUid} AND content_id = #{contentId}
+    </delete>
+</mapper>
