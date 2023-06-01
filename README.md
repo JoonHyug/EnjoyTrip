@@ -2,7 +2,7 @@
 
 ## 프로젝트 개요
 
----
+
 
 ### 개요
 
@@ -27,11 +27,11 @@
 
 ![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/4d395b5d-d894-4186-a2ff-849a13f0dd88)
 
-
+---
 
 ## 기술 스택
 
----
+
 
 BD
 
@@ -50,11 +50,11 @@ Front-End
 - vuex-persistedstate@4.1.0
 - vuex@3.6.2
 
-
+---
 
 ## 프로젝트 빌드
 
----
+
 
 DB
 
@@ -72,11 +72,11 @@ Font-End
 3. 공공 데이터 포털 서비스 키 입력
    - vuex의 module의 detail.js에 공공데이터 포털 서비스키를 입력해야 함
 
-
+---
 
 ## 개선점
 
----
+
 
 - 백엔드
   - 스프링 시큐리티 적용 X
@@ -87,37 +87,43 @@ Font-End
   - 게시판 댓글 기능
   - 로그인 관련 기능
 
-
+---
 
 ## 화면 설계
 
----
+
 
 메인 페이지
+
 ![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/d902b736-5046-4347-8670-e3004e8fb96d)
 
 로그인
+
 ![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/1db0660d-9383-4da8-a8f1-aadfc63704f2)
 
 검색
+
 ![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/90cf2f21-c7bf-44ee-a37d-c3f760595ebe)
 
 상세정보
+
 ![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/e5ae677a-3896-4209-a755-c8c892afcff7)
 
 게시판
+
 ![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/873767d3-f4de-4a99-b959-e031b93e28f2)
 ![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/74bd0112-92fb-4abf-bf2b-07800bdd7b33)
 ![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/a9aa807a-ec57-48e3-aef4-7e171de5804c)
 
 여행 계획
+
 ![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/e3f91d9d-346a-4b93-99f8-cc0185769781)
 ![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/86ca4924-fded-493d-9ddb-5d18e5101dec)
 
 마이페이지
+
 ![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/4e9178c6-bbaa-4cb1-8c4f-ff92b83b4658)
 ![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/718c106f-c8f9-40e1-821f-11c955d2cd6c)
 ![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/e29409a8-d782-4e72-9010-a6fc63e7f305)
 ![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/b6eed85a-aa52-49f4-99a7-c5dc151b7886)
 
----
