@@ -27,7 +27,7 @@
 
 ![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/4d395b5d-d894-4186-a2ff-849a13f0dd88)
 
----
+
 
 ## 기술 스택
 
@@ -50,7 +50,7 @@ Front-End
 - vuex-persistedstate@4.1.0
 - vuex@3.6.2
 
----
+
 
 ## 프로젝트 빌드
 
@@ -72,7 +72,7 @@ Font-End
 3. 공공 데이터 포털 서비스 키 입력
    - vuex의 module의 detail.js에 공공데이터 포털 서비스키를 입력해야 함
 
----
+
 
 ## 개선점
 
@@ -87,7 +87,7 @@ Font-End
   - 게시판 댓글 기능
   - 로그인 관련 기능
 
----
+
 
 ## 화면 설계
 
