@@ -25,7 +25,7 @@
 
 ### ERD
 
-![image]([https://github.com/JoonHyug/EnjoyTrip/assets/86625001/287e9026-08fb-45e6-b9f5-95f1d46911eb](https://private-user-images.githubusercontent.com/86625001/242175445-287e9026-08fb-45e6-b9f5-95f1d46911eb.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJrZXkxIiwiZXhwIjoxNjg1NTkyOTg4LCJuYmYiOjE2ODU1OTI2ODgsInBhdGgiOiIvODY2MjUwMDEvMjQyMTc1NDQ1LTI4N2U5MDI2LTA4ZmItNDVlNi1iOWY1LTk1ZjFkNDY5MTFlYi5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBSVdOSllBWDRDU1ZFSDUzQSUyRjIwMjMwNjAxJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDIzMDYwMVQwNDExMjhaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zOWUwODY1YzU5OWY4NTc2YjI3NWE3N2UzMzRmODlhZGU2ZDgxNjhkNTEyZmRiY2EyMjI3MDk0MmU5NmExMzhmJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.ys1kGV9NanKcClesCOTObAubimwVxNUuEtyIGGKMYks))
+![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/4d395b5d-d894-4186-a2ff-849a13f0dd88)
 
 ---
 
@@ -94,30 +94,30 @@ Font-End
 ---
 
 메인 페이지
-![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/1a258ad6-7dc5-484e-9536-eec78cfb3d22)
+![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/d902b736-5046-4347-8670-e3004e8fb96d)
 
 로그인
-![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/fba95284-1f1a-49ec-8b19-d366c8111375)
+![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/1db0660d-9383-4da8-a8f1-aadfc63704f2)
 
 검색
-![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/ad7d340e-a0c5-48a2-8bdb-531db3d04454)
+![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/90cf2f21-c7bf-44ee-a37d-c3f760595ebe)
 
 상세정보
-![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/f5d7d197-08ad-40dd-8e86-5b5169b87a46)
+![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/e5ae677a-3896-4209-a755-c8c892afcff7)
 
 게시판
-![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/4c43adba-9a46-4c9f-b65a-779bf151865d)
-![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/304796ff-c398-47ed-bfd9-a5150a9b0f68)
-![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/66d0dff0-382f-4aad-af0a-0c6303ec10f8)
+![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/873767d3-f4de-4a99-b959-e031b93e28f2)
+![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/74bd0112-92fb-4abf-bf2b-07800bdd7b33)
+![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/a9aa807a-ec57-48e3-aef4-7e171de5804c)
 
 여행 계획
-![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/1a3a5902-fb68-4b51-abee-202bdf1c2aaf)
-![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/23d145d4-f86c-4f03-9f86-f5a60961b3c6)
+![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/e3f91d9d-346a-4b93-99f8-cc0185769781)
+![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/86ca4924-fded-493d-9ddb-5d18e5101dec)
 
 마이페이지
-![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/32acf7fa-a7ba-4cbc-981a-ead1a281d817)
-![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/18af2d65-0d19-4ef9-bb78-4795c04c8320)
-![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/8f63078d-f5a7-4839-9fc5-c00e0db48492)
-![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/7e9463ce-d67a-404b-beb1-d473337c1bc9)
+![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/4e9178c6-bbaa-4cb1-8c4f-ff92b83b4658)
+![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/718c106f-c8f9-40e1-821f-11c955d2cd6c)
+![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/e29409a8-d782-4e72-9010-a6fc63e7f305)
+![image](https://github.com/JoonHyug/EnjoyTrip/assets/86625001/b6eed85a-aa52-49f4-99a7-c5dc151b7886)
 
 ---
